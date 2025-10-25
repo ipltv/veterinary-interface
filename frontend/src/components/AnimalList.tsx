@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAnimals } from '../hooks/useAnimals';
 import { calcAge } from '../utils/calcAge';
+import { formatDate } from '../utils/formatDate';
 
 /// Component to display a list of animals
 export default function AnimalList() {
@@ -27,7 +28,7 @@ export default function AnimalList() {
           <tr key={a.id} style={{ borderTop: '1px solid #ddd' }}>
             <td>{a.name}</td>
             <td>{a.species}</td>
-            <td>{a.birth_date || undefined}</td>
+            <td>{formatDate(a.birth_date) || undefined}</td>
             <td>{calcAge(a.birth_date)}</td>
             <td><Link to={`/animals/${a.id}`}>Open</Link></td>
           </tr>

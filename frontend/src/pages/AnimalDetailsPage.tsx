@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../store/store';
 import { clearCurrent, loadAnimalById } from '../store/animalsSlice';
 import { calcAge } from '../utils/calcAge';
+import { formatDate } from '../utils/formatDate';
 import EventList from '../components/EventsList';
 import EventForm from '../components/EventForm';
 import { exportAnimalExcel } from '../api/animalsAPI';
@@ -33,7 +34,7 @@ export default function AnimalDetailsPage() {
             <h2>{current.name}</h2>
             <p>
                 <b>Species:</b> {current.species}<br />
-                <b>Birth date:</b> {current.birth_date} <b>Age:</b> {calcAge(current.birth_date)}
+                <b>Birth date:</b> {formatDate(current.birth_date)} <b>Age:</b> {calcAge(current.birth_date)}
             </p>
             <h3>Events</h3>
             <EventForm animalId={current.id} />

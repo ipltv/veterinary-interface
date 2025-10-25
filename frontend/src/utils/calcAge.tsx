@@ -1,5 +1,5 @@
 
-/// Calculate age from birth date
+// Calculate age from birth date
 export function calcAge(birth: string | null | undefined): string {
   if (!birth) return '—';
 

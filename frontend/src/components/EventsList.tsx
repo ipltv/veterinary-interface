@@ -1,4 +1,5 @@
 import type { EventItem } from '../types/index.type';
+import { formatDate } from '../utils/formatDate';
 
 /// Component to display a list of events
 export default function EventList({ events }: { events: EventItem[] }) {
@@ -20,7 +21,7 @@ export default function EventList({ events }: { events: EventItem[] }) {
                     <tr key={ev.id} style={{ borderTop: '1px solid #ddd' }}>
                         <td>{ev.type}</td>
                         <td>{ev.description}</td>
-                        <td>{ev.event_date}</td>
+                        <td>{formatDate(ev.event_date)}</td>
                     </tr>
                 ))}
             </tbody>
