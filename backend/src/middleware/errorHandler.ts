@@ -1,3 +1,4 @@
+// middleware/errorHandler.ts
 import type { Request, Response, NextFunction } from 'express';
 import { NODE_ENV } from '../config/env.js';
 
