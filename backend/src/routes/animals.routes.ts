@@ -3,6 +3,7 @@ import { Router } from "express";
 import { animalsController } from "../controllers/animals.controller.js";
 import { validateId } from "../middleware/validateId.middleware.js";
 import { eventsController } from "../controllers/events.controller.js";
+import { exportController } from "../controllers/export.controller.js"
 
 const router = Router();
 
@@ -17,5 +18,7 @@ router.post("/", animalsController.createAnimal);
 router.post("/:id/events", validateId, eventsController.createEventForAnimal);
 //GET /animals/:id/events: Lists all events for an animal.
 router.get("/:id/events", validateId, eventsController.getEventsByAnimalId);
+//GET /animals/:id/export: Export all events for an animal into excel-file.
+router.get("/:id/events/export", validateId, exportController.downloadEventsExcel)
 
 export default router;
