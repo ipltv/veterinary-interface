@@ -1,0 +1,34 @@
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../store/store';
+import { clearCurrent, loadAnimalById } from '../store/animalsSlice';
+import { calcAge } from '../utils/calcAge';
+
+export default function AnimalDetailsPage() {
+    const params = useParams();
+    const id = Number(params.id);
+    const dispatch = useDispatch<AppDispatch>();
+    const { current, currentStatus, error } = useSelector((s: RootState) => s.animals);
+
+    useEffect(() => {
+        if (Number.isFinite(id)) dispatch(loadAnimalById(id));
+        return () => { dispatch(clearCurrent()); };
+    }, [id, dispatch]);
+
+    if (!Number.isFinite(id)) return <p>Invalid ID</p>;
+    if (currentStatus === 'loading') return <p>Loading...</p>;
+    if (currentStatus === 'failed') return <p style={{ color: 'red' }}>{error}</p>;
+    if (!current) return <p>Not found</p>;
+
+    return (
+        <div>
+            <h2>{current.name}</h2>
+            <p>
+                <b>Species:</b> {current.species}<br />
+                <b>Birth date:</b> {current.birth_date} <b>Age:</b> {calcAge(current.birth_date)}
+            </p>
+
+        </div>
+    );
+}
