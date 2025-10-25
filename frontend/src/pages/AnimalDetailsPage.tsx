@@ -36,11 +36,14 @@ export default function AnimalDetailsPage() {
                 <b>Species:</b> {current.species}<br />
                 <b>Birth date:</b> {formatDate(current.birth_date)} <b>Age:</b> {calcAge(current.birth_date)}
             </p>
+            <hr style={{ margin: '16px 0' }} />
             <h3>Events</h3>
-            <EventForm animalId={current.id} />
             <button onClick={() => exportAnimalExcel(id)} style={{ marginBottom: 12 }}>
                 Download Excel
             </button>
+            <EventForm animalId={current.id} />
+            <hr style={{ margin: '16px 0' }} />
+
             <EventList events={current.events || []} />
         </div>
     );

@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import AnimalsPage from '../pages/AnimalsPage';
-import AnimalDetailsPage from '../pages/AnimalDetailsPage';
+import AnimalsPage from '../AnimalsPage';
+import AnimalDetailsPage from '../AnimalDetailsPage';
 
 // Main application router
 export default function AppRouter() {
     return (
         <BrowserRouter>
             <nav style={{ marginBottom: 16 }}>
-                <Link to="/">Animals</Link>
+                <Link to="/">Main Page</Link>
             </nav>
             <Routes>
                 <Route path="/" element={<AnimalsPage />} />
