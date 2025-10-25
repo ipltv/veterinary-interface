@@ -1,3 +1,5 @@
+import type { EventItem } from "./event.type";
+
 export interface Animal {
     id: number;
     name: string;
@@ -6,5 +8,5 @@ export interface Animal {
 }
 
 export interface AnimalWithEvents extends Animal {
-    events: Event[];
+    events: EventItem[];
 }

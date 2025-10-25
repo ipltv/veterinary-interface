@@ -24,3 +24,12 @@ export async function fetchAnimalById(id: number): Promise<AnimalWithEvents> {
     const { data } = await api.get(`/animals/${id}`);
     return data;
 }
+
+// POST /animals/:id/events
+export async function createEvent(
+    id: number,
+    payload: { type: string; description: string; event_date: string }
+): Promise<Event> {
+    const { data } = await api.post(`/animals/${id}/events`, payload);
+    return data;
+}

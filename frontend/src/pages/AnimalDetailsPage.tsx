@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../store/store';
 import { clearCurrent, loadAnimalById } from '../store/animalsSlice';
 import { calcAge } from '../utils/calcAge';
+import EventList from '../components/EventsList';
+import EventForm from '../components/EventForm';
 
 export default function AnimalDetailsPage() {
     const params = useParams();
@@ -28,7 +30,9 @@ export default function AnimalDetailsPage() {
                 <b>Species:</b> {current.species}<br />
                 <b>Birth date:</b> {current.birth_date} <b>Age:</b> {calcAge(current.birth_date)}
             </p>
-
+            <h3>Events</h3>
+            <EventForm animalId={current.id} />
+            <EventList events={current.events || []} />
         </div>
     );
 }
