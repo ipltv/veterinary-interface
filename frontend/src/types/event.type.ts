@@ -5,5 +5,5 @@ export interface Event {
     animal_id: number;
     type: 'Visit' | 'Treatment' | 'Observation' | string;
     description: string;
-    event_date: Date; 
+    event_date: string; 
 }
