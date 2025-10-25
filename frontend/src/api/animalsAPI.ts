@@ -33,3 +33,18 @@ export async function createEvent(
     const { data } = await api.post(`/animals/${id}/events`, payload);
     return data;
 }
+
+
+// GET /animals/:id/events/export (download Excel)
+export async function exportAnimalExcel(id: number): Promise<void> {
+    const resp = await api.get(`/animals/${id}/events/export`, { responseType: 'blob' });
+    const blob = new Blob([resp.data], { type: resp.headers['content-type'] || 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `events_${id}.xlsx`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+}

@@ -6,6 +6,7 @@ import { clearCurrent, loadAnimalById } from '../store/animalsSlice';
 import { calcAge } from '../utils/calcAge';
 import EventList from '../components/EventsList';
 import EventForm from '../components/EventForm';
+import { exportAnimalExcel } from '../api/animalsAPI';
 
 export default function AnimalDetailsPage() {
     const params = useParams();
@@ -32,6 +33,9 @@ export default function AnimalDetailsPage() {
             </p>
             <h3>Events</h3>
             <EventForm animalId={current.id} />
+            <button onClick={() => exportAnimalExcel(id)} style={{ marginBottom: 12 }}>
+                Download Excel
+            </button>
             <EventList events={current.events || []} />
         </div>
     );

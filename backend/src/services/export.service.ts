@@ -14,7 +14,7 @@ export const exportService = {
             { header: 'ID', key: 'id', width: 10 },
             { header: 'Animal ID', key: 'animal_id', width: 15 },
             { header: 'Event Type', key: 'event_type', width: 20 },
-            { header: 'Date', key: 'date', width: 15 },
+            { header: 'Date', key: 'event_date', width: 15 },
             { header: 'Description', key: 'description', width: 30 },
         ];
 
