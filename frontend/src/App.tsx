@@ -4,14 +4,10 @@ import AppRouter from './routes/AppRouter.tsx';
 function App() {
 
   return (
-    <>
-      return (
-      <div style={{ maxWidth: 960, margin: '0 auto', padding: 16 }}>
-        <h1>Veterinary Interface</h1>
-        <AppRouter />
-      </div>
-      );
-    </>
+    <div style={{ maxWidth: 960, margin: '0 auto', padding: 16 }}>
+      <h1>Veterinary Interface</h1>
+      <AppRouter />
+    </div>
   )
 }
 
