@@ -2,8 +2,10 @@ import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/tool
 import type { Animal, AnimalWithEvents } from '../types/index.type';
 import { fetchAnimals, createAnimal, fetchAnimalById, createEvent } from '../api/animalsAPI';
 
+// Define status type for async operations
 type Status = 'idle' | 'loading' | 'succeeded' | 'failed';
 
+// Define the initial state structure
 interface AnimalsState {
     list: Animal[];
     listStatus: Status;
@@ -20,6 +22,7 @@ const initialState: AnimalsState = {
     error: null
 };
 
+// Async thunks for loading and manipulating animal data
 export const loadAnimals = createAsyncThunk('animals/load', async () => fetchAnimals());
 export const addAnimal = createAsyncThunk('animals/add', async (payload: Omit<Animal, 'id'>) => createAnimal(payload));
 export const loadAnimalById = createAsyncThunk('animals/loadById', async (id: number) => fetchAnimalById(id));
@@ -29,6 +32,7 @@ export const addEvent = createAsyncThunk(
         createEvent(id, { type, description, event_date })
 );
 
+// Redux slice for managing animal data
 const animalsSlice = createSlice({
     name: 'animals',
     initialState,

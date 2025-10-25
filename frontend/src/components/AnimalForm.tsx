@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '../store/store';
 import { addAnimal } from '../store/animalsSlice';
 
+// Component to add a new animal
 export default function AnimalForm() {
     const dispatch = useDispatch<AppDispatch>();
     const [name, setName] = useState('');
     const [species, setSpecies] = useState('');
     const [birthDate, setBirthDate] = useState<string>('');
 
-    const onSubmit = async (e: React.FormEvent) => {
+    const onSubmit = async (e: FormEvent) => {
         e.preventDefault();
         if (!name || !species) return;
         await dispatch(addAnimal({ name, species, birth_date: birthDate || null }));

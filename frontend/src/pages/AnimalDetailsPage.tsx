@@ -8,6 +8,7 @@ import EventList from '../components/EventsList';
 import EventForm from '../components/EventForm';
 import { exportAnimalExcel } from '../api/animalsAPI';
 
+/// Page to display animal details
 export default function AnimalDetailsPage() {
     const params = useParams();
     const id = Number(params.id);
@@ -15,10 +16,13 @@ export default function AnimalDetailsPage() {
     const { current, currentStatus, error } = useSelector((s: RootState) => s.animals);
 
     useEffect(() => {
+        // Check if ID is valid (not NaN and not infinite) and load animal
         if (Number.isFinite(id)) dispatch(loadAnimalById(id));
+        //Cleanup function
         return () => { dispatch(clearCurrent()); };
     }, [id, dispatch]);
 
+    // Handle various states
     if (!Number.isFinite(id)) return <p>Invalid ID</p>;
     if (currentStatus === 'loading') return <p>Loading...</p>;
     if (currentStatus === 'failed') return <p style={{ color: 'red' }}>{error}</p>;
