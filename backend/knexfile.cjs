@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+// DB configuration for different environments
 module.exports = {
     development: {
         client: "pg",

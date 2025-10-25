@@ -4,7 +4,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const requiredVars = [
-    "DATABASE_URL",
+  "NODE_ENV",
+  "DATABASE_URL",
 ] as const;
 
 // Create typed object to hold environment variables.
@@ -22,4 +23,5 @@ for (const key of requiredVars) {
 }
 
 // Export env variables
+export const NODE_ENV = env.NODE_ENV; // Application environment (development, production, etc.)
 export const DATABASE_URL = env.DATABASE_URL; // Database connection string
