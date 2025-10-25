@@ -5,5 +5,5 @@ export interface AnimalDB {
     id: number;
     name: string;
     species: string;
-    birth_date: Date;
+    birth_date?: Date;
 }

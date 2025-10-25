@@ -5,3 +5,4 @@
  *  */
 
 export * from './db/animals.type.js';
+export * from './db/events.type.js';
